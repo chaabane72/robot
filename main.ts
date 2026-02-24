@@ -1,12 +1,15 @@
+// =========================
+// RobotClub - TB6612FNG + Ultrason
+// Moteurs (fixe) :
+//  - Moteur A (gauche) : P13 / P14 / P15
+//  - Moteur B (droit)  : P8  / P12 / P16
+// Ultrason (fixe) : TRIG=P1, ECHO=P2
+// ⚠️ Si HC-SR04 (5V) : ECHO doit être abaissé à 3.3V (diviseur de tension)
+// =========================
+
+
 //% color=#2E8B57 icon="\uf1b9" block="RobotClub"
 namespace robotclub {
-
-    // =========================
-    // CONFIGURATION DES BROCHES
-    // =========================
-    // Moteur A (gauche) : P13 / P14 / P15
-    // Moteur B (droit)  : P8  / P12 / P16
-    // Ultrason : TRIG=P1, ECHO=P2 (⚠️ ECHO doit être 3.3V max)
 
     const AIN1 = DigitalPin.P13
     const AIN2 = DigitalPin.P14
@@ -16,9 +19,6 @@ namespace robotclub {
     const BIN2 = DigitalPin.P12
     const PWMB = AnalogPin.P16
 
-    const TRIG = DigitalPin.P1
-    const ECHO = DigitalPin.P2
-
     function clamp100(v: number): number {
         if (v > 100) return 100
         if (v < -100) return -100
@@ -26,6 +26,7 @@ namespace robotclub {
     }
 
     function pctToPwm(v: number): number {
+        // 0..100 -> 0..1023
         if (v < 0) v = 0
         if (v > 100) v = 100
         return Math.idiv(v * 1023, 100)
@@ -110,11 +111,25 @@ namespace robotclub {
         moteurA(-vitesse)
         moteurB(vitesse)
     }
+}
 
-    // =========================
-    // BLOCS ULTRASON
-    // =========================
 
+
+//% color=#1E90FF icon="\uf2a0" block="RobotClub Ultrason"
+namespace robotclub_ultrason {
+
+    const TRIG = DigitalPin.P1
+    const ECHO = DigitalPin.P2
+
+    function clampRange(v: number, min: number, max: number): number {
+        if (v < min) return min
+        if (v > max) return max
+        return v
+    }
+
+    /**
+     * Distance ultrason en centimètres (TRIG=P1, ECHO=P2)
+     */
     //% group="Ultrason" block="distance ultrason (cm)"
     export function distanceUltrasonCm(): number {
         pins.digitalWritePin(TRIG, 0)
@@ -124,13 +139,50 @@ namespace robotclub {
         pins.digitalWritePin(TRIG, 0)
 
         const duration = pins.pulseIn(ECHO, PulseValue.High, 25000)
-        return Math.idiv(duration, 58)
+        const cm = Math.idiv(duration, 58)
+
+        // Valeurs 0 = pas de mesure (hors portée / timeout)
+        if (cm <= 0) return 0
+
+        // limite raisonnable pour éviter des valeurs absurdes
+        return clampRange(cm, 1, 300)
     }
 
+    /**
+     * Vrai si obstacle plus proche que le seuil
+     */
     //% group="Ultrason" block="obstacle à moins de %seuil cm"
-    //% seuil.min=1 seuil.max=200 seuil.defl=10
+    //% seuil.min=1 seuil.max=300 seuil.defl=10
     export function obstacleMoinsDe(seuil: number): boolean {
         const d = distanceUltrasonCm()
         return d > 0 && d < seuil
+    }
+
+    /**
+     * Vrai si obstacle plus loin que le seuil
+     */
+    //% group="Ultrason" block="obstacle à plus de %seuil cm"
+    //% seuil.min=1 seuil.max=300 seuil.defl=20
+    export function obstaclePlusDe(seuil: number): boolean {
+        const d = distanceUltrasonCm()
+        return d > seuil
+    }
+
+    /**
+     * Vrai si obstacle entre min et max (inclus)
+     */
+    //% group="Ultrason" block="obstacle entre %min cm et %max cm"
+    //% min.min=0 min.max=300 min.defl=5
+    //% max.min=0 max.max=300 max.defl=20
+    export function obstacleEntre(min: number, max: number): boolean {
+        const d = distanceUltrasonCm()
+        if (d <= 0) return false
+        if (min > max) {
+            // si l'utilisateur inverse, on corrige automatiquement
+            const t = min
+            min = max
+            max = t
+        }
+        return d >= min && d <= max
     }
 }
