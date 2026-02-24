@@ -1,0 +1,13 @@
+{
+  "name": "Robot",
+  "version": "0.0.1",
+  "description": "TB6612FNG motor driver pour micro:bit",
+  "license": "MIT",
+  "dependencies": {
+    "core": "*"
+  },
+  "files": [
+    "main.ts"
+  ],
+  "public": true
+}
