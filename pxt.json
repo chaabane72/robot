@@ -1,13 +1,12 @@
 {
-"name": "obotclub",
-  
-  "version": "0.0.1",
-  "description": "Blocs type Motorbit pour driver TB6612FNG (P13,P14,P15 / P8,P12,P16)",
+  "name": "robotclub",
+  "version": "0.0.2",
+  "description": "RobotClub - Extension TB6612FNG (blocs type Motorbit) pour micro:bit",
   "license": "MIT",
   "authors": [
-    "Ton Nom"
+    "chaabane72"
   ],
-  "homepage": "https://github.com/TONCOMPTE/pxt-tb6612-motorbit",
+  "homepage": "https://github.com/chaabane72/robot",
   "dependencies": {
     "core": "*"
   },
@@ -19,10 +18,5 @@
   "public": true,
   "supportedTargets": [
     "microbit"
-  ],
-  "targetVersions": {
-    "branch": "v6.0.0",
-    "tag": "v6.0.0",
-    "commits": "https://github.com/microsoft/pxt-microbit"
-  }
+  ]
 }
