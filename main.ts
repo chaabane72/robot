@@ -1,5 +1,5 @@
 //% color=#0fbc11 weight=100 icon="\uf1b9"
-//% block="motorbit"
+//% block="RobotClub"
 namespace motorbit {
 
     // =========================
