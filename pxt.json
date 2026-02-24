@@ -1,6 +1,6 @@
 {
   "name": "robotclub",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "RobotClub - Extension TB6612FNG (blocs type Motorbit) pour micro:bit",
   "license": "MIT",
   "authors": [
