@@ -1,8 +1,12 @@
 {
   "name": "pxt-tb6612-motorbit",
   "version": "0.0.1",
-  "description": "Blocs type Motorbit pour TB6612FNG (P13,P14,P15 / P8,P12,P16)",
+  "description": "Blocs type Motorbit pour driver TB6612FNG (P13,P14,P15 / P8,P12,P16)",
   "license": "MIT",
+  "authors": [
+    "Ton Nom"
+  ],
+  "homepage": "https://github.com/TONCOMPTE/pxt-tb6612-motorbit",
   "dependencies": {
     "core": "*"
   },
@@ -10,5 +14,14 @@
     "main.ts",
     "README.md"
   ],
-  "public": true
+  "icon": "icon.png",
+  "public": true,
+  "supportedTargets": [
+    "microbit"
+  ],
+  "targetVersions": {
+    "branch": "v6.0.0",
+    "tag": "v6.0.0",
+    "commits": "https://github.com/microsoft/pxt-microbit"
+  }
 }
