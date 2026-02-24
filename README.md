@@ -1,3 +1,9 @@
+# Extension TB6612FNG – Robot micro:bit
+
+![Robot TB6612](tb6612_robot.png)
+
+---
+
 # Extension TB6612FNG (blocs type Motorbit) – micro:bit
 
 Cette extension permet de piloter **2 moteurs DC** via un **driver TB6612FNG** avec un câblage **fixe** (celui du projet).
