@@ -1,6 +1,6 @@
 # Extension TB6612FNG – Robot micro:bit
 
-![Robot TB6612](tb6612_robot.png)
+![RobotClub - TB6612](./icon.png)
 
 ---
 
