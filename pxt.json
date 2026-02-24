@@ -1,5 +1,6 @@
 {
-  "name": "pxt-tb6612-motorbit",
+"name": "obotclub",
+  
   "version": "0.0.1",
   "description": "Blocs type Motorbit pour driver TB6612FNG (P13,P14,P15 / P8,P12,P16)",
   "license": "MIT",
