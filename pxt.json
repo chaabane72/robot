@@ -1,13 +1,14 @@
 {
-  "name": "Robot",
+  "name": "pxt-tb6612-motorbit",
   "version": "0.0.1",
-  "description": "TB6612FNG motor driver pour micro:bit",
+  "description": "Blocs type Motorbit pour TB6612FNG (P13,P14,P15 / P8,P12,P16)",
   "license": "MIT",
   "dependencies": {
     "core": "*"
   },
   "files": [
-    "main.ts"
+    "main.ts",
+    "README.md"
   ],
   "public": true
 }
