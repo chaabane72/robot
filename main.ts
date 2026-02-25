@@ -84,28 +84,28 @@ namespace robotclub {
         moteurB(0)
     }
 
-    //% group="Moteurs" block="avancer à %vitesse % de puissance"
+    //% group="Moteurs" block="avancer à %vitesse \\% de puissance"
     //% vitesse.min=0 vitesse.max=100
     export function avancer(vitesse: number): void {
         moteurA(vitesse)
         moteurB(vitesse)
     }
 
-    //% group="Moteurs" block="reculer à %vitesse de puissance"
+    //% group="Moteurs" block="reculer à %vitesse \\% de puissance"
     //% vitesse.min=0 vitesse.max=100
     export function reculer(vitesse: number): void {
         moteurA(-vitesse)
         moteurB(-vitesse)
     }
 
-    //% group="Moteurs" block="tourner à droite à %vitesse de puissance"
+    //% group="Moteurs" block="tourner à droite à %vitesse \\% de puissance"
     //% vitesse.min=0 vitesse.max=100
     export function tournerDroite(vitesse: number): void {
         moteurA(vitesse)
         moteurB(-vitesse)
     }
 
-    //% group="Moteurs" block="tourner à gauche à %vitesse de puissance"
+    //% group="Moteurs" block="tourner à gauche à %vitesse \\% de puissance"
     //% vitesse.min=0 vitesse.max=100
     export function tournerGauche(vitesse: number): void {
         moteurA(-vitesse)
