@@ -84,7 +84,7 @@ namespace robotclub {
         moteurB(0)
     }
 
-    //% group="Moteurs" block="avancer à %vitesse de puissance"
+    //% group="Moteurs" block="avancer à %vitesse % de puissance"
     //% vitesse.min=0 vitesse.max=100
     export function avancer(vitesse: number): void {
         moteurA(vitesse)
